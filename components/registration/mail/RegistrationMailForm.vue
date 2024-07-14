@@ -17,16 +17,19 @@ const submit = (): void => {
         <v-text-field
             class="card__input"
             v-model="firstName"
-            :rules="firstNameRules"
-            label="First name"
+            label="Login"
             variant="outlined"
         ></v-text-field>
-
         <v-text-field
-            class="card__input"
-            v-model="lastName"
-            :rules="lastNameRules"
-            label="Last name"
+            label="Email address"
+            placeholder="johndoe@gmail.com"
+            type="email"
+            variant="outlined"
+        ></v-text-field>
+        <v-text-field
+            hint="Enter your password to access this website"
+            label="Password"
+            type="password"
             variant="outlined"
         ></v-text-field>
       </v-card-item>
