@@ -42,5 +42,6 @@ import {storeToRefs} from "pinia";
 
 main {
   min-height: 100vh;
+  height: 100vh;
 }
 </style>
