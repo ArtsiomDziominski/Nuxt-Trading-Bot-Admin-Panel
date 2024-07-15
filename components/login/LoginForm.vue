@@ -1,9 +1,17 @@
 <script setup lang="ts">
+import {storeToRefs} from "pinia";
+import {authStore} from "~/store/auth";
 
+const storeAuth = authStore();
+const {userLogin} = storeToRefs(storeAuth);
+
+const submit = (): void => {
+  storeAuth.requestLogin();
+}
 </script>
 
 <template>
-  <v-form fast-fail @submit.prevent class="form">
+  <v-form fast-fail @submit.prevent="submit" class="form">
     <v-card
         color="secondary"
         class="mx-auto pa-8 card"
@@ -14,17 +22,20 @@
       <v-card-item class="card__item">
         <v-text-field
             class="card__input"
-            v-model="firstName"
-            :rules="firstNameRules"
-            label="First name"
+            v-model="userLogin.mail"
+            label="Email address"
+            placeholder="johndoe@gmail.com"
+            type="email"
             variant="outlined"
+            required
         ></v-text-field>
 
         <v-text-field
             class="card__input"
-            v-model="lastName"
-            :rules="lastNameRules"
-            label="Last name"
+            v-model="userLogin.password"
+            hint="Enter your password to access this website"
+            label="Password"
+            type="password"
             variant="outlined"
         ></v-text-field>
       </v-card-item>

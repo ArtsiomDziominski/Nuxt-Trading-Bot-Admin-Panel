@@ -4,7 +4,7 @@ import LoginForm from "~/components/login/LoginForm.vue";
 
 <template>
   <div class="login-wrapper">
-    <LoginForm/>
+    <LazyLoginForm/>
   </div>
 </template>
 

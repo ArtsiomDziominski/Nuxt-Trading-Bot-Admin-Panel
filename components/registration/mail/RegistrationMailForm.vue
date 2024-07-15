@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import {storeToRefs} from "pinia";
+import {authStore} from "~/store/auth";
+
+const store = authStore();
+const {userSignup} = storeToRefs(store);
+
 const submit = (): void => {
   console.log('submit');
 }
@@ -16,17 +22,19 @@ const submit = (): void => {
       <v-card-item class="card__item">
         <v-text-field
             class="card__input"
-            v-model="firstName"
+            v-model="userSignup.login"
             label="Login"
             variant="outlined"
         ></v-text-field>
         <v-text-field
+            v-model="userSignup.mail"
             label="Email address"
             placeholder="johndoe@gmail.com"
             type="email"
             variant="outlined"
         ></v-text-field>
         <v-text-field
+            v-model="userSignup.password"
             hint="Enter your password to access this website"
             label="Password"
             type="password"

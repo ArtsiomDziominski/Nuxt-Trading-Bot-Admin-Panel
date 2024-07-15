@@ -2,14 +2,14 @@
 const registrationMethods = [
   {
     title: 'Mail',
-    value: '/registration/mail',
+    value: '/signup/mail',
     props: {
       appendIcon: '$next',
     },
   },
   {
     title: 'Wallets',
-    value: '/registration/wallet',
+    value: '/signup/wallet',
     props: {
       appendIcon: '$next',
     },
