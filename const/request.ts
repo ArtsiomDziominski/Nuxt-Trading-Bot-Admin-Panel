@@ -18,6 +18,7 @@ export const HEADER_PARAMETERS = {
 
 export const ENDPOINT = {
     auth: {
-        login: '/auth/login'
+        login: '/auth/login',
+        signupMail: '/auth/registration'
     }
 }
