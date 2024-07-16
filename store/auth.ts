@@ -18,13 +18,17 @@ export const authStore = defineStore('authStore', () => {
 
     const requestLogin = async (): Promise<void> => {
         const response = await axios.post(BURL + ENDPOINT.auth.login, userLogin.value, getHeadersRequest([HEADER_PARAMETERS.content]));
-        console.log(response.data);
+    }
+
+    const requestSignupMail = async (): Promise<void> => {
+        const response = await axios.post(BURL + ENDPOINT.auth.signupMail, userSignup.value, getHeadersRequest([HEADER_PARAMETERS.content]));
     }
 
 
     return {
         userLogin,
         userSignup,
-        requestLogin
+        requestLogin,
+        requestSignupMail
     }
 })

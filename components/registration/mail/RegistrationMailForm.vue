@@ -2,11 +2,11 @@
 import {storeToRefs} from "pinia";
 import {authStore} from "~/store/auth";
 
-const store = authStore();
-const {userSignup} = storeToRefs(store);
+const storeAuth = authStore();
+const {userSignup} = storeToRefs(storeAuth);
 
 const submit = (): void => {
-  console.log('submit');
+  storeAuth.requestSignupMail();
 }
 </script>
 
