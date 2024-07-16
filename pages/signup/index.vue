@@ -24,9 +24,9 @@ const to = (item: {id: string}): void => {
 <template>
   <div class="reg-wrapper">
     <v-card class="mx-auto card">
-      <v-list class="list" :items="registrationMethods" @click:select="to">
-      </v-list>
+      <v-list class="list" :items="registrationMethods" @click:select="to" />
     </v-card>
+    <p class="ma-6 text-grey-lighten-1 text-caption">Уже зарегистрированы? <NuxtLink class="text-black" to="/login">Вход</NuxtLink></p>
   </div>
 </template>
 
@@ -36,6 +36,7 @@ const to = (item: {id: string}): void => {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   .card {
     width: 400px;

@@ -40,10 +40,11 @@ const submit = (): void => {
             type="password"
             variant="outlined"
         ></v-text-field>
+        <p class="card__signup text-grey-lighten-2 text-caption">Уже зарегистрированы? <NuxtLink class="text-white" to="/login">Вход</NuxtLink></p>
       </v-card-item>
 
       <v-card-actions class="card__actions">
-        <v-btn class="mt-2" type="submit" block>Зарегистрироваться</v-btn>
+        <v-btn class="mt-2" type="submit">Зарегистрироваться</v-btn>
       </v-card-actions>
     </v-card>
   </v-form>

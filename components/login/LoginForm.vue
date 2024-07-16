@@ -38,6 +38,7 @@ const submit = (): void => {
             type="password"
             variant="outlined"
         ></v-text-field>
+        <p class="card__signup text-grey-lighten-2 text-caption">Нет аккаунта? <NuxtLink class="text-white" to="/signup">Регистрация</NuxtLink></p>
       </v-card-item>
 
       <v-card-actions class="card__actions">
@@ -63,6 +64,14 @@ const submit = (): void => {
 
     &__input {
       padding: 6px 0;
+    }
+
+    &__signup {
+
+      a {
+        text-decoration: none;
+        color: var(--color-text);
+      }
     }
 
     &__actions {
