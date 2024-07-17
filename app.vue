@@ -2,6 +2,7 @@
   <NuxtLayout>
     <section class="pages">
 <!--      <MainHeader/>-->
+      <v-btn @click="toggleTheme">{{ theme.global.name.value  }}</v-btn>
       <main>
         <NuxtPage></NuxtPage>
       </main>
@@ -11,19 +12,15 @@
   </NuxtLayout>
 </template>
 <script setup lang="ts">
-// import MainHeader from "~/components/header/MainHeader.vue";
-// import MainFooter from "~/components/footer/MainFooter.vue";
-import {onMounted} from "vue";
-import {storeToRefs} from "pinia";
-// import {userStore} from "./store/userStore";
-// import AppSnackbar from "~/components/AppSnackbar.vue";
-// const store = userStore();
-// const {isMainLoader} = storeToRefs(store);
+import {useTheme} from "vuetify";
+import {themeLight, themeDark, localStorageKeyTheme} from "~/const/theme";
 
-// onMounted(async () => {
-//   isMainLoader.value = true;
-//   isMainLoader.value = false;
-// })
+const theme = useTheme();
+
+function toggleTheme () {
+  theme.global.name.value = theme.global.current.value.dark ? themeLight : themeDark;
+  localStorage.setItem(localStorageKeyTheme, theme.global.name.value);
+}
 </script>
 
 <style lang="scss">
