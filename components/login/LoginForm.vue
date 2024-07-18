@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import {storeToRefs} from "pinia";
 import {authStore} from "~/store/auth";
+import {userStore} from "~/store/user";
 
 const storeAuth = authStore();
 const {userLogin} = storeToRefs(storeAuth);
 
-const submit = (): void => {
-  storeAuth.requestLogin();
+const storeUser = userStore();
+const {isAuthenticated} = storeToRefs(storeUser);
+
+const router = useRouter();
+
+const submit = async (): Promise<void> => {
+  await storeAuth.requestLogin();
+  if (isAuthenticated.value) await router.push('/main');
 }
 </script>
 
