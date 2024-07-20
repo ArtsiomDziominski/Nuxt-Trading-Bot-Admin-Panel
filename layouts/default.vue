@@ -3,16 +3,15 @@
 </script>
 
 <template>
-  <v-app>
-    <div class="app">
-      <LayoutHeader class="header"/>
-      <main class="page">
-        <slot/>
-      </main>
-      <LayoutFooter class="footer" />
-    </div>
-  </v-app>
-
+	<v-app>
+		<div class="app">
+			<LayoutHeader class="header" />
+			<main class="page">
+				<slot />
+			</main>
+			<LayoutFooter class="footer" />
+		</div>
+	</v-app>
 </template>
 
 <style scoped lang="scss">

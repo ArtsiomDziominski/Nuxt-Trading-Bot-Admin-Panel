@@ -2,9 +2,9 @@
 </script>
 
 <template>
-  <div class="login-wrapper">
-    <LazyLoginForm/>
-  </div>
+	<div class="login-wrapper">
+		<LazyLoginForm />
+	</div>
 </template>
 
 <style scoped lang="scss">

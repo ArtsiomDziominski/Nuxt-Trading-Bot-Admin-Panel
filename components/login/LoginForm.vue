@@ -1,58 +1,77 @@
 <script setup lang="ts">
-import {storeToRefs} from "pinia";
-import {authStore} from "~/store/auth";
-import {userStore} from "~/store/user";
+import { storeToRefs } from 'pinia';
+import { authStore } from '~/store/auth';
+import { userStore } from '~/store/user';
 
 const storeAuth = authStore();
-const {userLogin} = storeToRefs(storeAuth);
+const { userLogin } = storeToRefs(storeAuth);
 
 const storeUser = userStore();
-const {isAuthenticated} = storeToRefs(storeUser);
+const { isAuthenticated } = storeToRefs(storeUser);
 
 const router = useRouter();
 
 const submit = async (): Promise<void> => {
-  await storeAuth.requestLogin();
-  if (isAuthenticated.value) await router.push('/main');
-}
+	await storeAuth.requestLogin();
+	if (isAuthenticated.value) await router.push('/main');
+};
 </script>
 
 <template>
-  <v-form fast-fail @submit.prevent="submit" class="form">
-    <v-card
-        color="secondary"
-        class="mx-auto pa-8 card"
-    >
-      <v-card-title class="card__title">
-        <p class="text-h4">Вход</p>
-      </v-card-title>
-      <v-card-item class="card__item">
-        <v-text-field
-            class="card__input"
-            v-model="userLogin.mail"
-            label="Email address"
-            placeholder="johndoe@gmail.com"
-            type="email"
-            variant="outlined"
-            required
-        ></v-text-field>
+	<v-form
+		fast-fail
+		class="form"
+		@submit.prevent="submit"
+	>
+		<v-card
+			color="secondary"
+			class="mx-auto pa-8 card"
+		>
+			<v-card-title class="card__title">
+				<p class="text-h4">
+					Вход
+				</p>
+			</v-card-title>
+			<v-card-item class="card__item">
+				<v-text-field
+					v-model="userLogin.mail"
+					class="card__input"
+					label="Email address"
+					placeholder="johndoe@gmail.com"
+					type="email"
+					variant="outlined"
+					required
+				/>
 
-        <v-text-field
-            class="card__input"
-            v-model="userLogin.password"
-            hint="Enter your password to access this website"
-            label="Password"
-            type="password"
-            variant="outlined"
-        ></v-text-field>
-        <p class="card__signup text-grey-lighten-2 text-caption">Нет аккаунта? <NuxtLink class="text-white" to="/signup">Регистрация</NuxtLink></p>
-      </v-card-item>
+				<v-text-field
+					v-model="userLogin.password"
+					class="card__input"
+					hint="Enter your password to access this website"
+					label="Password"
+					type="password"
+					variant="outlined"
+				/>
+				<p class="card__signup text-grey-lighten-2 text-caption">
+					Нет аккаунта? <NuxtLink
+						class="text-white"
+						to="/signup"
+					>
+						Регистрация
+					</NuxtLink>
+				</p>
+			</v-card-item>
 
-      <v-card-actions class="card__actions">
-        <v-btn class="mt-2" type="submit" block>Войти</v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-form>
+			<v-card-actions class="card__actions">
+				<v-btn
+					class="mt-2"
+					type="submit"
+					block
+				>
+					Войти
+				</v-btn>
+			</v-card-actions>
+		</v-card>
+	</v-form>
 </template>
 
 <style scoped lang="scss">

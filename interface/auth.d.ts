@@ -1,17 +1,17 @@
 export interface IUser {
-    "login": string,
-    "mail": string
+	login: string;
+	mail: string;
 }
 
 export interface ILogin {
-    "password": string,
-    "mail": string
+	password: string;
+	mail: string;
 }
 
 export interface ISignupMail {
-    "login": string,
-    "password": string,
-    "mail": string
+	login: string;
+	password: string;
+	mail: string;
 }
 
 export as namespace AUTH;

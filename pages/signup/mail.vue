@@ -3,9 +3,9 @@
 </script>
 
 <template>
-  <div class="login-wrapper">
-    <LazyRegistrationMailForm/>
-  </div>
+	<div class="login-wrapper">
+		<LazyRegistrationMailForm />
+	</div>
 </template>
 
 <style scoped lang="scss">

@@ -3,14 +3,14 @@
 </script>
 
 <template>
-  <div class="wrapper-loading">
-    <v-progress-circular
-        :size="70"
-        :width="7"
-        color="purple"
-        indeterminate
-    ></v-progress-circular>
-  </div>
+	<div class="wrapper-loading">
+		<v-progress-circular
+			:size="70"
+			:width="7"
+			color="purple"
+			indeterminate
+		/>
+	</div>
 </template>
 
 <style scoped lang="scss">
