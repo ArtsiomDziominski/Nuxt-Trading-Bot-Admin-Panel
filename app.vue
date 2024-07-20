@@ -1,6 +1,7 @@
 <template>
   <NuxtLayout>
-    <section class="pages">
+    <GlobalLoading v-if="isLoading" />
+    <section v-else class="pages">
 <!--      <MainHeader/>-->
       <v-btn @click="toggleTheme">{{ theme.global.name.value  }}</v-btn>
       <main>
@@ -14,8 +15,15 @@
 <script setup lang="ts">
 import {useTheme} from "vuetify";
 import {themeLight, themeDark, localStorageKeyTheme} from "~/const/theme";
+import GlobalLoading from "~/components/GlobalLoading.vue";
 
 const theme = useTheme();
+
+const isLoading = ref(true)
+
+onMounted(() => {
+  isLoading.value = false;
+})
 
 function toggleTheme () {
   theme.global.name.value = theme.global.current.value.dark ? themeLight : themeDark;
