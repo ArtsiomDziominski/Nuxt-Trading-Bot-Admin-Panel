@@ -10,13 +10,13 @@ function toggleTheme() {
 </script>
 
 <template>
-  <v-app-bar>
+  <v-app-bar scroll-behavior="elevate">
     <template v-slot:prepend>
       <v-icon icon="$vuetify"></v-icon>
     </template>
 
     <v-app-bar-title>Application Bar</v-app-bar-title>
-    <v-btn @click="toggleTheme">{{ theme.global.name.value }}</v-btn>
+    <v-btn @click="toggleTheme">{{ theme.global.current.value.dark ? 'light' : 'dark' }}</v-btn>
   </v-app-bar>
 </template>
 
