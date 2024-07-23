@@ -1,7 +1,7 @@
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import type { ThemeDefinition } from 'vuetify';
-import { createVuetify, useTheme } from 'vuetify';
+import { createVuetify } from 'vuetify';
 import { themeLight } from '~/const/theme';
 
 const light: ThemeDefinition = {
@@ -19,7 +19,7 @@ const dark: ThemeDefinition = {
 };
 
 export default defineNuxtPlugin((nuxt) => {
-	const defaultTheme = import.meta.client ? localStorage.getItem('theme') || themeLight : themeLight;
+	const defaultTheme = process.client ? localStorage.getItem('theme') || themeLight : themeLight;
 	const vuetify = createVuetify({
 		ssr: true,
 		components,

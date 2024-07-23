@@ -12,6 +12,11 @@ export default defineNuxtConfig({
 		'@pinia/nuxt',
 		'@nuxt/eslint',
 	],
+	runtimeConfig: {
+		public: {
+			API_URL: process.env.API_URL,
+		},
+	},
 	eslint: {
 		config: {
 			stylistic: {

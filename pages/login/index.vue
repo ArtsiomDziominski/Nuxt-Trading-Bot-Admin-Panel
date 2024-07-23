@@ -3,7 +3,7 @@
 
 <template>
 	<div class="login-wrapper">
-		<LazyLoginForm />
+		<LoginForm />
 	</div>
 </template>
 

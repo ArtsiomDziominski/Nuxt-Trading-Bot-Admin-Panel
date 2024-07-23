@@ -1,5 +1,5 @@
 export function getCookie(name: string): string | null {
-	if (!import.meta.client) return null;
+	if (!process.client) return null;
 	const nameEQ = name + '=';
 	const ca = document.cookie.split(';');
 	for (let i = 0; i < ca.length; i++) {

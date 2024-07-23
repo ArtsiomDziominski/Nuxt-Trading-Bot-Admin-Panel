@@ -50,15 +50,8 @@ const submit = async (): Promise<void> => {
 					label="Password"
 					type="password"
 					variant="outlined"
+          error-messages="s"
 				/>
-				<p class="card__signup text-grey-lighten-2 text-caption">
-					Нет аккаунта? <NuxtLink
-						class="text-white"
-						to="/signup"
-					>
-						Регистрация
-					</NuxtLink>
-				</p>
 			</v-card-item>
 
 			<v-card-actions class="card__actions">
@@ -90,14 +83,6 @@ const submit = async (): Promise<void> => {
 
     &__input {
       padding: 6px 0;
-    }
-
-    &__signup {
-
-      a {
-        text-decoration: none;
-        color: var(--color-text);
-      }
     }
 
     &__actions {
