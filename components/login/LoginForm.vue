@@ -15,6 +15,10 @@ const submit = async (): Promise<void> => {
 	await storeAuth.requestLogin();
 	if (isAuthenticated.value) await router.push('/main');
 };
+
+const isDisabledBtn = computed((): boolean => {
+	return !userLogin.value.mail || !userLogin.value.password
+});
 </script>
 
 <template>
@@ -40,7 +44,7 @@ const submit = async (): Promise<void> => {
 					placeholder="johndoe@gmail.com"
 					type="email"
 					variant="outlined"
-					required
+          error-messages=""
 				/>
 
 				<v-text-field
@@ -50,7 +54,7 @@ const submit = async (): Promise<void> => {
 					label="Password"
 					type="password"
 					variant="outlined"
-          error-messages="s"
+          error-messages=""
 				/>
 			</v-card-item>
 
@@ -59,6 +63,7 @@ const submit = async (): Promise<void> => {
 					class="mt-2"
 					type="submit"
 					block
+          :disabled="isDisabledBtn"
 				>
 					Войти
 				</v-btn>
