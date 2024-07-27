@@ -4,7 +4,7 @@ import { authStore } from '~/store/auth';
 import { userStore } from '~/store/user';
 
 const storeAuth = authStore();
-const { userLogin } = storeToRefs(storeAuth);
+const { userLogin, errors } = storeToRefs(storeAuth);
 
 const storeUser = userStore();
 const { isAuthenticated } = storeToRefs(storeUser);
@@ -12,12 +12,23 @@ const { isAuthenticated } = storeToRefs(storeUser);
 const router = useRouter();
 
 const submit = async (): Promise<void> => {
+	if (storeAuth.checkValidationLoginForm() && storeAuth.checkValidationPasswordForm()) return;
 	await storeAuth.requestLogin();
 	if (isAuthenticated.value) await router.push('/main');
 };
 
+const blurMail = async (): Promise<void> => {
+	errors.value.mail.message = '';
+	if (userLogin.value.mail) storeAuth.checkValidationLoginForm();
+};
+
+const blurPassword = async (): Promise<void> => {
+	errors.value.password.message = '';
+	if (userLogin.value.password) storeAuth.checkValidationPasswordForm();
+};
+
 const isDisabledBtn = computed((): boolean => {
-	return !userLogin.value.mail || !userLogin.value.password
+	return !!errors.value.mail.message && !!errors.value.password.message;
 });
 </script>
 
@@ -44,7 +55,8 @@ const isDisabledBtn = computed((): boolean => {
 					placeholder="johndoe@gmail.com"
 					type="email"
 					variant="outlined"
-          error-messages=""
+					:error-messages="errors.mail.message"
+					@blur="blurMail"
 				/>
 
 				<v-text-field
@@ -54,7 +66,8 @@ const isDisabledBtn = computed((): boolean => {
 					label="Password"
 					type="password"
 					variant="outlined"
-          error-messages=""
+					:error-messages="errors.password.message"
+					@blur="blurPassword"
 				/>
 			</v-card-item>
 
@@ -63,7 +76,7 @@ const isDisabledBtn = computed((): boolean => {
 					class="mt-2"
 					type="submit"
 					block
-          :disabled="isDisabledBtn"
+					:disabled="isDisabledBtn"
 				>
 					Войти
 				</v-btn>
