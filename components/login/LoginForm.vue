@@ -4,7 +4,7 @@ import { authStore } from '~/store/auth';
 import { userStore } from '~/store/user';
 
 const storeAuth = authStore();
-const { userLogin, errors } = storeToRefs(storeAuth);
+const { userLogin, errors, isLoaderLogin } = storeToRefs(storeAuth);
 
 const storeUser = userStore();
 const { isAuthenticated } = storeToRefs(storeUser);
@@ -12,8 +12,9 @@ const { isAuthenticated } = storeToRefs(storeUser);
 const router = useRouter();
 
 const submit = async (): Promise<void> => {
-	if (storeAuth.checkValidationLoginForm() && storeAuth.checkValidationPasswordForm()) return;
+	if (!storeAuth.checkValidationLoginForm() && !storeAuth.checkValidationPasswordForm()) return;
 	await storeAuth.requestLogin();
+	await storeUser.requestSetUser();
 	if (isAuthenticated.value) await router.push('/main');
 };
 
@@ -77,6 +78,7 @@ const isDisabledBtn = computed((): boolean => {
 					type="submit"
 					block
 					:disabled="isDisabledBtn"
+					:loading="isLoaderLogin"
 				>
 					Войти
 				</v-btn>
