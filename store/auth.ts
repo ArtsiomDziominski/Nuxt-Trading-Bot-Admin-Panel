@@ -30,13 +30,17 @@ export const authStore = defineStore('authStore', () => {
 		password: { message: '' },
 	});
 
+	const isLoaderLogin: Ref<boolean> = ref(false);
+
 	const appendErrors = (error: COMMON.Errors): void => {
 		errors.value = { ...errors.value, ...error };
 	};
 
 	const requestLogin = async (): Promise<void> => {
+		isLoaderLogin.value = true;
 		const response = await axios.post(BURL + ENDPOINT.auth.login, userLogin.value, getHeadersRequest([HEADER_PARAMETERS.content]));
 		if (response.data.success) await storeUser.saveToken(response.data.token);
+		isLoaderLogin.value = false;
 	};
 
 	const checkValidationLoginForm = (): boolean => {
@@ -57,6 +61,7 @@ export const authStore = defineStore('authStore', () => {
 		userLogin,
 		userSignup,
 		errors,
+		isLoaderLogin,
 		requestLogin,
 		checkValidationLoginForm,
 		checkValidationPasswordForm,
