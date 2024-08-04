@@ -7,4 +7,12 @@ export interface Errors {
 	[key: string]: Error;
 }
 
+export interface DataTableServerLoadItems {
+	page: number,
+	itemsPerPage: number,
+	sortBy: [],
+	groupBy: [],
+	search: string
+}
+
 export as namespace COMMON;

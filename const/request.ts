@@ -19,6 +19,9 @@ export const ENDPOINT = {
 		signupMail: '/auth/registration',
 		user: '/auth/user',
 	},
+	clients: {
+		get: '/user/users',
+	},
 };
 
 export enum ErrorCodes {
