@@ -10,9 +10,9 @@ export const apiStore = defineStore('apiStore', () => {
 	const BURL = computed(() => config.value.public.API_URL);
 	const router = useRouter();
 
-	const get = async (endpoint: string): Promise<any> => {
+	const get = async (endpoint: string, query: string = ''): Promise<any> => {
 		try {
-			const response = await axios.get(BURL.value + endpoint, getHeadersRequest([HEADER_PARAMETERS.content, HEADER_PARAMETERS.authorization, HEADER_PARAMETERS.accept]));
+			const response = await axios.get(BURL.value + endpoint + '?' + query, getHeadersRequest([HEADER_PARAMETERS.content, HEADER_PARAMETERS.authorization, HEADER_PARAMETERS.accept]));
 			if (response?.data?.success) return response.data;
 			return response.data;
 		}
