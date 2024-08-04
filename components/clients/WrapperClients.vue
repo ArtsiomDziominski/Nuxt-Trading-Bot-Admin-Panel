@@ -3,7 +3,7 @@
 </script>
 
 <template>
-	<LazyClientsTable/>
+	<LazyClientsTable />
 </template>
 
 <style scoped lang="scss">

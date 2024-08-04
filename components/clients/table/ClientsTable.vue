@@ -9,8 +9,8 @@ const { clientList, isLoadingClientList, clientPages, clientTotal } = storeToRef
 onMounted(() => storeUsers.requestClients());
 
 const loadItems = ({ page, itemsPerPage }: COMMON.DataTableServerLoadItems): void => {
-  storeUsers.setClientsRequestParams(page, itemsPerPage);
-}
+	storeUsers.setClientsRequestParams(page, itemsPerPage);
+};
 </script>
 
 <template>

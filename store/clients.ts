@@ -1,7 +1,7 @@
-import {defineStore} from 'pinia';
-import type {Ref, UnwrapRef} from 'vue';
-import {apiStore} from '~/store/api';
-import {ENDPOINT} from '~/const/request';
+import { defineStore } from 'pinia';
+import type { Ref, UnwrapRef } from 'vue';
+import { apiStore } from '~/store/api';
+import { ENDPOINT } from '~/const/request';
 
 export const usersStore = defineStore('usersStore', () => {
 	const storeApi = apiStore();
@@ -29,7 +29,7 @@ export const usersStore = defineStore('usersStore', () => {
 		await requestClients();
 	};
 
-	const clearClientsParams = async (page: number): Promise<void> => {
+	const clearClientsParams = async (): Promise<void> => {
 		clientRequestParams.value = { offset: 0, limit: 10, currentPage: 1 };
 	};
 

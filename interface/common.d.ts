@@ -8,11 +8,11 @@ export interface Errors {
 }
 
 export interface DataTableServerLoadItems {
-	page: number,
-	itemsPerPage: number,
-	sortBy: [],
-	groupBy: [],
-	search: string
+	page: number;
+	itemsPerPage: number;
+	sortBy: [];
+	groupBy: [];
+	search: string;
 }
 
 export as namespace COMMON;

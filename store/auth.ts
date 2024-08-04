@@ -7,6 +7,7 @@ import { userStore } from '~/store/user';
 import { apiStore } from '~/store/api';
 import { ruleLoginForm, rulePasswordForm } from '~/const/validation';
 import { validationStore } from '~/store/validation';
+import { encryptPassword } from '~/utils/encrypt';
 
 export const authStore = defineStore('authStore', () => {
 	const storeUser = userStore();
@@ -38,7 +39,12 @@ export const authStore = defineStore('authStore', () => {
 
 	const requestLogin = async (): Promise<void> => {
 		isLoaderLogin.value = true;
-		const response = await axios.post(BURL + ENDPOINT.auth.login, userLogin.value, getHeadersRequest([HEADER_PARAMETERS.content]));
+		const passwordEncrypt = encryptPassword(userLogin.value.password);
+		const body = {
+			...userLogin.value,
+			password: passwordEncrypt,
+		};
+		const response = await axios.post(BURL + ENDPOINT.auth.login, body, getHeadersRequest([HEADER_PARAMETERS.content]));
 		if (response.data.success) await storeUser.saveToken(response.data.token);
 		isLoaderLogin.value = false;
 	};
