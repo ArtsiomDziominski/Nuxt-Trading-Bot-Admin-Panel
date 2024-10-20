@@ -15,7 +15,7 @@ const submit = async (): Promise<void> => {
 	if (!storeAuth.checkValidationLoginForm() && !storeAuth.checkValidationPasswordForm()) return;
 	await storeAuth.requestLogin();
 	await storeUser.requestSetUser();
-	if (isAuthenticated.value) await router.push('/main');
+	if (isAuthenticated.value) await router.push('/clients');
 };
 
 const blurMail = async (): Promise<void> => {

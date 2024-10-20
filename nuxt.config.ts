@@ -4,19 +4,23 @@ export default defineNuxtConfig({
 		'vuetify/lib/styles/main.sass',
 		'@mdi/font/css/materialdesignicons.min.css',
 	],
+
 	build: {
 		transpile: ['vuetify'],
 	},
+
 	modules: [
 		// ...
 		'@pinia/nuxt',
 		'@nuxt/eslint',
 	],
+
 	runtimeConfig: {
 		public: {
 			API_URL: process.env.API_URL,
 		},
 	},
+
 	eslint: {
 		config: {
 			stylistic: {
@@ -26,4 +30,6 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
+	compatibilityDate: '2024-10-20',
 });

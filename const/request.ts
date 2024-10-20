@@ -22,6 +22,10 @@ export const ENDPOINT = {
 	clients: {
 		get: '/user/users',
 	},
+	gridBots: {
+		get: '/gridBot/activeBots',
+		watching: '/gridBot/watching',
+	},
 };
 
 export enum ErrorCodes {
