@@ -21,7 +21,13 @@ const loadItems = ({ page, itemsPerPage }: COMMON.DataTableServerLoadItems): voi
 		:loading="isLoadingClientList"
 		item-value="name"
 		@update:options="loadItems"
-	/>
+	>
+		<template #top>
+			<v-toolbar flat>
+				<v-toolbar-title>Clients ({{ clientTotal }})</v-toolbar-title>
+			</v-toolbar>
+		</template>
+	</v-data-table-server>
 </template>
 
 <style scoped lang="scss">

@@ -20,6 +20,10 @@ export const gridBotsStore = defineStore('gridBotsStore', () => {
 		return gridBotsResponse.value?.totalItems || 0;
 	});
 
+	const gridBotsTotalGridBotsActive = computed((): UnwrapRef<number> => (gridBotsResponse.value?.totalGridBotsActive || 0));
+	const gridBotsTotalGridBotsNotActive = computed((): UnwrapRef<number> => (gridBotsResponse.value?.totalGridBotsNotActive || 0));
+	const gridBotsTotalGridBots = computed((): UnwrapRef<number> => gridBotsTotalGridBotsActive.value + gridBotsTotalGridBotsNotActive.value);
+
 	const gridBotsPages = computed((): UnwrapRef<number> => {
 		return Math.ceil(gridBotsTotal.value / gridBotsRequestParams.value.limit);
 	});
@@ -60,6 +64,9 @@ export const gridBotsStore = defineStore('gridBotsStore', () => {
 		gridBotsTotal,
 		isLoadingGridBotsList,
 		isLoadingChangeWatchingGridBot,
+		gridBotsTotalGridBots,
+		gridBotsTotalGridBotsActive,
+		gridBotsTotalGridBotsNotActive,
 		requestChangeWatchingGridBot,
 		requestGridBots,
 		setGridBotsRequestParams,

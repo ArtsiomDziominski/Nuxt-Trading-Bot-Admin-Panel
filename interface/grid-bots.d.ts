@@ -42,6 +42,8 @@ export interface GridBotsRequestParams {
 export interface GridBotsResponse {
 	items: GridBots[];
 	totalItems: number;
+	totalGridBotsActive: number;
+	totalGridBotsNotActive: number;
 }
 
 export as namespace GRID_BOTS;

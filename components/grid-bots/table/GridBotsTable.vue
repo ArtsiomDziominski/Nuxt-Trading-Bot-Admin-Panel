@@ -4,7 +4,7 @@ import { headersGridBots } from '~/const/headers';
 import { gridBotsStore } from '~/store/grid-bots';
 
 const storeGridBots = gridBotsStore();
-const { gridBotsList, gridBotsTotal, isLoadingGridBotsList } = storeToRefs(storeGridBots);
+const { gridBotsList, gridBotsTotal, isLoadingGridBotsList, gridBotsTotalGridBots, gridBotsTotalGridBotsActive, gridBotsTotalGridBotsNotActive } = storeToRefs(storeGridBots);
 
 onMounted(() => storeGridBots.requestGridBots());
 
@@ -29,7 +29,7 @@ const getGridBotsSymbol = (cryptoPair: GRID_BOTS.GridBotsCryptoPair[]) => {
 	>
 		<template #top>
 			<v-toolbar flat>
-				<v-toolbar-title>Grid bots</v-toolbar-title>
+				<v-toolbar-title>Grid bots | Users: {{ gridBotsTotal }} | Bots: {{ gridBotsTotalGridBots }} | Active Bots: {{ gridBotsTotalGridBotsActive }} | Not Active Bots: {{ gridBotsTotalGridBotsNotActive }}</v-toolbar-title>
 			</v-toolbar>
 		</template>
 		<template #item.login="{ item }">
