@@ -4,12 +4,12 @@
 
 <template>
 	<div class="wrapper-loading">
-		<v-progress-circular
-			:size="70"
-			:width="7"
-			color="purple"
-			indeterminate
-		/>
+		<v-icon
+			size="100"
+		>
+			mdi-finance
+		</v-icon>
+		<span class="title">Admin panel "Crypto Trading"</span>
 	</div>
 </template>
 
@@ -20,5 +20,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 16px;
+
+  .title {
+    font-size: 50px;
+  }
 }
 </style>
