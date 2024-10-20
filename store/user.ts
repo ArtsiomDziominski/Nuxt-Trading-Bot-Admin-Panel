@@ -25,7 +25,7 @@ export const userStore = defineStore('userStore', () => {
 	const requestSetUser = async (): Promise<void> => {
 		try {
 			const response = await api.get(ENDPOINT.auth.user);
-			if (response?.success) user.value = response;
+			if (response?.success) user.value = response?.data;
 		}
 		catch (e) {
 			if ((e as any)?.response?.data) deleteUserToken();
