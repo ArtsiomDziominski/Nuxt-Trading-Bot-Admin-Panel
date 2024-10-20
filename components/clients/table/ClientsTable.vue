@@ -4,9 +4,7 @@ import { usersStore } from '~/store/clients';
 import { headersClients } from '~/const/headers';
 
 const storeUsers = usersStore();
-const { clientList, isLoadingClientList, clientPages, clientTotal } = storeToRefs(storeUsers);
-
-onMounted(() => storeUsers.requestClients());
+const { clientList, isLoadingClientList, clientTotal } = storeToRefs(storeUsers);
 
 const loadItems = ({ page, itemsPerPage }: COMMON.DataTableServerLoadItems): void => {
 	storeUsers.setClientsRequestParams(page, itemsPerPage);

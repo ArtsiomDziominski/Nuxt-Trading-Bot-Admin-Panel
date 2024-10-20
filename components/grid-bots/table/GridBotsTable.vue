@@ -6,8 +6,6 @@ import { gridBotsStore } from '~/store/grid-bots';
 const storeGridBots = gridBotsStore();
 const { gridBotsList, gridBotsTotal, isLoadingGridBotsList, gridBotsTotalGridBots, gridBotsTotalGridBotsActive, gridBotsTotalGridBotsNotActive } = storeToRefs(storeGridBots);
 
-onMounted(() => storeGridBots.requestGridBots());
-
 const loadItems = ({ page, itemsPerPage }: COMMON.DataTableServerLoadItems): void => {
 	storeGridBots.setGridBotsRequestParams(page, itemsPerPage);
 };
