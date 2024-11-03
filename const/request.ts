@@ -26,6 +26,11 @@ export const ENDPOINT = {
 		get: '/gridBot/activeBots',
 		watching: '/gridBot/watching',
 	},
+	system: {
+		ws: {
+			get: '/system/ws',
+		},
+	},
 };
 
 export enum ErrorCodes {

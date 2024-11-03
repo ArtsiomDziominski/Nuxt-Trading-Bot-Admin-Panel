@@ -7,4 +7,8 @@ export const headerButtons = [
 		title: 'Grid bots',
 		to: '/grid-bots',
 	},
+	{
+		title: 'System',
+		to: '/system',
+	},
 ];
